@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel V6</title>
+  <title>Metro 2033 RP — Site Officiel V7</title>
   <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
@@ -1464,6 +1464,100 @@
       }
     }
 
+  
+    /* =========================
+       V7 — LOGO ONE LIFE METRO
+       ========================= */
+
+    .brand-badge.brand-logo {
+      width: 64px;
+      height: 64px;
+      padding: 0;
+      overflow: hidden;
+      background: rgba(0,0,0,0.72);
+      border: 1px solid rgba(255,91,79,0.34);
+      box-shadow:
+        0 0 26px rgba(255,91,79,0.18),
+        inset 0 0 22px rgba(0,0,0,0.74);
+    }
+
+    .brand-badge.brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      filter:
+        contrast(1.08)
+        saturate(0.95)
+        drop-shadow(0 0 14px rgba(255,91,79,0.32));
+      animation: logoPulseV7 4.6s ease-in-out infinite;
+    }
+
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .hero-title-row h1 {
+      margin-top: 0;
+    }
+
+    .hero-logo {
+      width: clamp(92px, 12vw, 150px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,91,79,0.22);
+      box-shadow:
+        0 0 34px rgba(255,91,79,0.22),
+        0 22px 60px rgba(0,0,0,0.52);
+      filter: contrast(1.08) saturate(0.9);
+      background: rgba(0,0,0,0.62);
+      animation: heroLogoFloatV7 6.5s ease-in-out infinite;
+    }
+
+    .intro-box::before {
+      content: "";
+      display: block;
+      width: min(210px, 54vw);
+      height: 150px;
+      margin: 0 auto 18px;
+      background: url('olmetro.png') center/contain no-repeat;
+      filter: drop-shadow(0 0 28px rgba(255,91,79,0.28));
+      opacity: 0.92;
+    }
+
+    @keyframes logoPulseV7 {
+      0%, 100% { opacity: 0.88; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.025); }
+    }
+
+    @keyframes heroLogoFloatV7 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    @media (max-width: 720px) {
+      .brand-badge.brand-logo {
+        width: 54px;
+        height: 54px;
+      }
+
+      .hero-title-row {
+        gap: 14px;
+      }
+
+      .hero-logo {
+        width: 86px;
+      }
+
+      .intro-box::before {
+        width: 160px;
+        height: 112px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1503,7 +1597,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#" data-sector="accueil">
-        <span class="brand-badge">☢</span>
+        <span class="brand-badge brand-logo"><img src="olmetro.png" alt="Logo One Life Metro"></span>
         <span><small>Serveur Roleplay</small>Metro 2033 RP</span>
       </a>
 
@@ -1530,7 +1624,7 @@
           <article class="hero-card">
             <div class="hero-content">
               <span class="eyebrow">☢ Moscou — Année 2033</span>
-              <h1>Survis au Metro</h1>
+              <div class="hero-title-row"><img class="hero-logo" src="olmetro.png" alt="Logo One Life Metro"><h1>Survis au Metro</h1></div>
               <p class="lead">
                 Le monde d'en haut est mort. Sous les ruines irradiées de Moscou, les stations sont devenues des cités,
                 les munitions une monnaie, et chaque tunnel peut être ton dernier voyage.
