@@ -795,14 +795,345 @@
       .hero-stats { grid-template-columns: 1fr; }
       .geiger { display: none; }
     }
+  
+    /* =========================
+       V4 — AMBIANCE ULTRA METRO
+       ========================= */
+
+    :root {
+      --radiation: #9dff6a;
+      --danger-glow: rgba(255, 91, 79, 0.28);
+      --cold-glow: rgba(148, 201, 255, 0.18);
+    }
+
+    body {
+      cursor: crosshair;
+    }
+
+    .cinematic-bars {
+      position: fixed;
+      inset: 0;
+      z-index: 26;
+      pointer-events: none;
+    }
+
+    .cinematic-bars::before,
+    .cinematic-bars::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: rgba(0,0,0,0.68);
+      box-shadow: 0 0 42px rgba(0,0,0,0.75);
+    }
+
+    .cinematic-bars::before { top: 0; }
+    .cinematic-bars::after { bottom: 0; }
+
+    .photo-rotator {
+      position: fixed;
+      inset: 0;
+      z-index: -6;
+      pointer-events: none;
+      opacity: 0.34;
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.08) saturate(0.82);
+      animation: photoRotate 42s infinite;
+    }
+
+    .photo-rotator::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.92)),
+        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.58) 76%);
+    }
+
+    .light-cone {
+      position: fixed;
+      top: -8vh;
+      left: 34%;
+      width: 34vw;
+      height: 82vh;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(220,240,235,0.24), transparent 74%);
+      clip-path: polygon(44% 0, 58% 0, 100% 100%, 0 100%);
+      filter: blur(10px);
+      opacity: 0.16;
+      animation: flashlightSway 8s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .radiation-haze {
+      position: fixed;
+      inset: 0;
+      z-index: 18;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 78%, rgba(157,255,106,0.10), transparent 24%),
+        radial-gradient(circle at 84% 18%, rgba(255,91,79,0.07), transparent 24%),
+        linear-gradient(90deg, transparent, rgba(157,255,106,0.025), transparent);
+      opacity: 0.32;
+      animation: radiationPulse 5.2s ease-in-out infinite;
+    }
+
+    .static-noise {
+      position: fixed;
+      inset: 0;
+      z-index: 24;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.045) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, rgba(214,162,74,0.035) 0 1px, transparent 1px),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,0.026) 0 1px, transparent 1px);
+      background-size: 43px 43px, 71px 71px, 97px 97px;
+      opacity: 0.20;
+      animation: noiseDrift 6s steps(3, end) infinite;
+      mix-blend-mode: screen;
+    }
+
+    .rain-ash {
+      position: fixed;
+      inset: 0;
+      z-index: 19;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ash {
+      position: absolute;
+      top: -20px;
+      width: 2px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(220,230,225,0.26);
+      filter: blur(0.4px);
+      animation: ashFall linear infinite;
+    }
+
+    .hud-corner {
+      position: fixed;
+      z-index: 76;
+      pointer-events: none;
+      color: rgba(240,209,138,0.78);
+      font-size: 0.70rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 0 16px rgba(214,162,74,0.36);
+    }
+
+    .hud-top-left { left: 18px; top: 98px; }
+    .hud-top-right { right: 18px; top: 98px; text-align: right; }
+    .hud-bottom-left { left: 18px; bottom: 20px; }
+
+    .gas-mask-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 23;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 30% 48%, transparent 0%, transparent 28%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.58) 100%),
+        radial-gradient(ellipse at 70% 48%, transparent 0%, transparent 28%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.58) 100%);
+      opacity: 0.18;
+      mix-blend-mode: multiply;
+    }
+
+    .section-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.20;
+      pointer-events: none;
+      background-size: cover;
+      background-position: center;
+      filter: blur(1px) saturate(0.78);
+    }
+
+    #lore .section-backdrop { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.86)), url('fond2.jpg'); }
+    #factions .section-backdrop { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.86)), url('fond1.jpg'); }
+    #reglement .section-backdrop { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.86)), url('fond3.jpg'); }
+    #systems .section-backdrop { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.86)), url('fond4.jpg'); }
+    #carte .section-backdrop { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.86)), url('fond5.jpg'); }
+
+    .sector-section {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card, .panel, .card {
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card:hover, .panel:hover, .card:hover {
+      border-color: rgba(214,162,74,0.28);
+      box-shadow:
+        0 30px 95px rgba(0,0,0,0.78),
+        0 0 40px rgba(214,162,74,0.08);
+      transform: translateY(-2px);
+      transition: 0.28s ease;
+    }
+
+    .hero-card::before,
+    .panel::before,
+    .card::before {
+      box-shadow: inset 0 0 28px rgba(214,162,74,0.028);
+    }
+
+    .hero-card::after {
+      animation: heroZoom 18s ease-in-out infinite;
+    }
+
+    .danger-alert {
+      position: fixed;
+      top: 118px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-14px);
+      z-index: 130;
+      width: min(690px, calc(100% - 34px));
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,91,79,0.42);
+      background: linear-gradient(135deg, rgba(33,8,8,0.91), rgba(7,10,9,0.86));
+      color: #ffe0dc;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.78rem;
+      font-weight: 950;
+      box-shadow: 0 0 46px rgba(255,91,79,0.20), 0 22px 60px rgba(0,0,0,0.62);
+      backdrop-filter: blur(9px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
+
+    .danger-alert.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .danger-alert::before {
+      content: "●";
+      color: var(--red);
+      margin-right: 10px;
+      text-shadow: 0 0 18px rgba(255,91,79,1);
+      animation: pulse 0.8s ease-in-out infinite;
+    }
+
+    .btn::after, .nav-cta::after, .mini-btn::after, .copy-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.24), transparent);
+      transform: translateX(-135%);
+      transition: transform 0.55s ease;
+      pointer-events: none;
+    }
+
+    .btn:hover::after, .nav-cta:hover::after, .mini-btn:hover::after, .copy-btn:hover::after {
+      transform: translateX(135%);
+    }
+
+    .map-line {
+      animation: mapPulse 2.6s ease-in-out infinite;
+    }
+
+    .station-dot {
+      animation: stationBlink 2.3s ease-in-out infinite;
+    }
+
+    .station-dot:nth-of-type(2n) {
+      animation-delay: 0.55s;
+    }
+
+    @keyframes photoRotate {
+      0%, 16% { background-image: url('fond5.jpg'); }
+      20%, 36% { background-image: url('fond1.jpg'); }
+      40%, 56% { background-image: url('fond2.jpg'); }
+      60%, 76% { background-image: url('fond3.jpg'); }
+      80%, 96% { background-image: url('fond4.jpg'); }
+      100% { background-image: url('fond5.jpg'); }
+    }
+
+    @keyframes flashlightSway {
+      0%, 100% { transform: translateX(-4vw) rotate(-3deg); opacity: 0.11; }
+      50% { transform: translateX(5vw) rotate(3deg); opacity: 0.22; }
+    }
+
+    @keyframes radiationPulse {
+      0%, 100% { opacity: 0.22; filter: hue-rotate(0deg); }
+      50% { opacity: 0.42; filter: hue-rotate(16deg); }
+    }
+
+    @keyframes noiseDrift {
+      0% { transform: translate(0,0); }
+      33% { transform: translate(7px,-5px); }
+      66% { transform: translate(-5px,8px); }
+      100% { transform: translate(0,0); }
+    }
+
+    @keyframes ashFall {
+      0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+      12% { opacity: 0.38; }
+      88% { opacity: 0.20; }
+      100% { transform: translate3d(var(--drift), 115vh, 0) rotate(260deg); opacity: 0; }
+    }
+
+    @keyframes heroZoom {
+      0%, 100% { transform: scale(1); opacity: 0.53; }
+      50% { transform: scale(1.045); opacity: 0.62; }
+    }
+
+    @keyframes mapPulse {
+      0%, 100% { box-shadow: 0 0 22px rgba(214,162,74,0.24); }
+      50% { box-shadow: 0 0 42px rgba(214,162,74,0.44); }
+    }
+
+    @keyframes stationBlink {
+      0%, 100% { box-shadow: 0 0 18px rgba(214,162,74,0.38); }
+      50% { box-shadow: 0 0 34px rgba(157,255,106,0.42); }
+    }
+
+    @media (max-width: 720px) {
+      .cinematic-bars::before,
+      .cinematic-bars::after { height: 28px; }
+
+      .hud-corner,
+      .gas-mask-vignette { display: none; }
+
+      .danger-alert {
+        top: 138px;
+        font-size: 0.68rem;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+  <div class="photo-rotator"></div>
+  <div class="cinematic-bars"></div>
+  <div class="light-cone"></div>
+  <div class="radiation-haze"></div>
+  <div class="static-noise"></div>
+  <div class="gas-mask-vignette"></div>
+  <div class="rain-ash" id="rainAsh"></div>
+  <div class="hud-corner hud-top-left">VISOR // METRO-LINK</div>
+  <div class="hud-corner hud-top-right">FILTER // 07:42<br>AMMO // LOW</div>
+  <div class="hud-corner hud-bottom-left">SURFACE ACCESS // LOCKED</div>
+  <div class="danger-alert" id="dangerAlert">Alerte radio — présence hostile signalée dans le secteur.</div>
+
   <div class="intro">
     <div class="intro-box">
       <h1>Connexion au réseau Metro</h1>
-      <p>Authentification survivant — fréquence souterraine</p>
+      <p>Authentification survivant — filtre actif — signal instable</p>
       <div class="loading-bar"><div class="loading-fill"></div></div>
     </div>
   </div>
@@ -905,6 +1236,7 @@
     </section>
 
     <section id="lore" class="sector-section section">
+      <div class="section-backdrop"></div>
       <div class="container">
         <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
         <div class="section-header">
@@ -935,6 +1267,7 @@
     </section>
 
     <section id="factions" class="sector-section section">
+      <div class="section-backdrop"></div>
       <div class="container">
         <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
         <div class="section-header">
@@ -970,6 +1303,7 @@
     </section>
 
     <section id="reglement" class="sector-section section">
+      <div class="section-backdrop"></div>
       <div class="container">
         <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
         <div class="section-header">
@@ -1017,6 +1351,7 @@
     </section>
 
     <section id="systems" class="sector-section section">
+      <div class="section-backdrop"></div>
       <div class="container">
         <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
         <div class="section-header">
@@ -1056,6 +1391,7 @@
     </section>
 
     <section id="carte" class="sector-section section">
+      <div class="section-backdrop"></div>
       <div class="container">
         <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
         <div class="section-header">
@@ -1175,6 +1511,57 @@
     document.getElementById('copyIp').addEventListener('click', () => {
       alert("IP non renseignée pour le moment.");
     });
+
+    // V4 ambiance ultra : cendres, alertes radio et fond selon section
+    const ashContainer = document.getElementById('rainAsh');
+    if (ashContainer) {
+      for (let i = 0; i < 64; i++) {
+        const ash = document.createElement('span');
+        ash.className = 'ash';
+        ash.style.left = Math.random() * 100 + 'vw';
+        ash.style.animationDuration = (8 + Math.random() * 13) + 's';
+        ash.style.animationDelay = (-Math.random() * 18) + 's';
+        ash.style.opacity = (0.12 + Math.random() * 0.32).toFixed(2);
+        ash.style.setProperty('--drift', ((Math.random() * 160) - 80) + 'px');
+        ashContainer.appendChild(ash);
+      }
+    }
+
+    const dangerAlert = document.getElementById('dangerAlert');
+    const alerts = [
+      "Alerte radio — présence hostile signalée dans le secteur.",
+      "Détection Geiger — radiation instable à proximité d'une sortie surface.",
+      "Communication perdue — patrouille absente du réseau depuis 12 minutes.",
+      "Baisse de pression — fermeture temporaire des sas.",
+      "Mouvement détecté — tunnels nord placés sous surveillance."
+    ];
+
+    function showDangerAlert(text) {
+      if (!dangerAlert) return;
+      dangerAlert.textContent = text;
+      dangerAlert.classList.add('is-visible');
+      setTimeout(() => dangerAlert.classList.remove('is-visible'), 3600);
+    }
+
+    setInterval(() => {
+      const alertText = alerts[Math.floor(Math.random() * alerts.length)];
+      showDangerAlert(alertText);
+    }, 16000);
+
+    const originalShowSector = showSector;
+    showSector = function(id) {
+      originalShowSector(id);
+      if (id !== 'accueil') {
+        showDangerAlert("Connexion au secteur — " + id.toUpperCase() + " // signal instable.");
+      }
+    };
+
+    document.querySelectorAll('.station-dot').forEach(dot => {
+      dot.addEventListener('mouseenter', () => {
+        showDangerAlert("Station " + dot.textContent + " — données partielles récupérées.");
+      });
+    });
+
   </script>
 </body>
 </html>
