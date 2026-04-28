@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel</title>
+  <title>Metro 2033 RP — Site Officiel V6</title>
   <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
@@ -797,7 +797,7 @@
     }
   
     /* =========================
-       V4 — AMBIANCE ULTRA METRO
+       V4 — AMBIANCE ULTRA METRO / base
        ========================= */
 
     :root {
@@ -1114,18 +1114,365 @@
       }
     }
 
+  
+    /* =========================
+       V5 — OPTIMISÉ PROD
+       Garde l'ambiance, réduit le coût GPU/CPU
+       ========================= */
+
+    body {
+      cursor: auto;
+      background-attachment: fixed;
+    }
+
+    .photo-rotator {
+      opacity: 0.26;
+      filter: contrast(1.04) saturate(0.82);
+      animation-duration: 70s;
+      will-change: background-image;
+    }
+
+    .cinematic-bars::before,
+    .cinematic-bars::after {
+      height: 34px;
+      background: rgba(0,0,0,0.58);
+      box-shadow: none;
+    }
+
+    .radiation-haze {
+      opacity: 0.22;
+      animation-duration: 9s;
+      background:
+        radial-gradient(circle at 18% 78%, rgba(157,255,106,0.075), transparent 24%),
+        radial-gradient(circle at 84% 18%, rgba(255,91,79,0.045), transparent 24%);
+    }
+
+    .rain-ash {
+      opacity: 0.55;
+    }
+
+    .ash {
+      height: 9px;
+      background: rgba(220,230,225,0.20);
+      animation-duration: 16s !important;
+    }
+
+    .ambient-layer::before {
+      opacity: 0.55;
+      animation-duration: 14s;
+    }
+
+    .fog {
+      opacity: 0.085;
+      filter: blur(30px);
+      animation-duration: 40s;
+    }
+
+    .scan-light {
+      opacity: 0.42;
+      animation-duration: 22s;
+      width: 18%;
+      background: linear-gradient(90deg, transparent, rgba(214,162,74,0.036), transparent);
+    }
+
+    .hero-card::after {
+      animation-duration: 34s;
+    }
+
+    .hero-card:hover,
+    .panel:hover,
+    .card:hover {
+      transform: none;
+      box-shadow:
+        0 24px 78px rgba(0,0,0,0.68),
+        0 0 26px rgba(214,162,74,0.055);
+    }
+
+    .btn:hover,
+    .mini-btn:hover,
+    .copy-btn:hover {
+      transform: none;
+    }
+
+    .station-dot {
+      animation-duration: 4s;
+    }
+
+    .map-line {
+      animation-duration: 5.5s;
+    }
+
+    .danger-alert {
+      box-shadow: 0 0 28px rgba(255,91,79,0.14), 0 18px 45px rgba(0,0,0,0.48);
+    }
+
+    .hud-corner {
+      opacity: 0.72;
+    }
+
+    .section-backdrop {
+      opacity: 0.14;
+      filter: none;
+    }
+
+    .hero-card,
+    .panel,
+    .card {
+      backdrop-filter: blur(4px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .intro {
+        display: none;
+      }
+
+      .rain-ash,
+      .scan-light,
+      .radiation-haze,
+      .photo-rotator {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .photo-rotator,
+      .scan-light,
+      .rain-ash,
+      .hud-corner {
+        display: none;
+      }
+
+      .cinematic-bars::before,
+      .cinematic-bars::after {
+        height: 22px;
+      }
+
+      body::before {
+        opacity: 0.34;
+        animation: none;
+      }
+
+      .hero-card::after {
+        animation: none;
+      }
+
+      .radiation-haze {
+        opacity: 0.12;
+        animation: none;
+      }
+
+      .intro {
+        animation-delay: 2.8s;
+      }
+
+      .loading-fill {
+        animation-duration: 2.4s;
+      }
+    }
+
+  
+    /* =========================
+       V6 — FACTIONS OFFICIELLES
+       Hanza / Reich / Ligne Rouge / Ordre Spartiate
+       ========================= */
+
+    .faction-grid-v6 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .faction-card-v6 {
+      min-height: 430px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.34) 42%, rgba(0,0,0,0.94) 100%),
+        var(--faction-image);
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 26px 80px rgba(0,0,0,0.62);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .faction-card-v6::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at top left, var(--faction-glow), transparent 34%),
+        linear-gradient(90deg, rgba(0,0,0,0.20), transparent 48%, rgba(0,0,0,0.40));
+      opacity: 0.86;
+    }
+
+    .faction-card-v6::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border: 1px solid var(--faction-line);
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 42px rgba(0,0,0,0.58);
+    }
+
+    .faction-card-v6:hover {
+      transform: none;
+      border-color: var(--faction-line);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.72), 0 0 34px var(--faction-glow);
+    }
+
+    .faction-content-v6 {
+      padding: 24px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.62));
+      position: relative;
+      z-index: 2;
+    }
+
+    .faction-kicker-v6 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--faction-line);
+      background: rgba(0,0,0,0.44);
+      color: var(--faction-accent);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px var(--faction-glow);
+    }
+
+    .faction-card-v6 h3 {
+      margin: 0 0 8px;
+      color: #f4f2ea;
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 0 22px rgba(0,0,0,0.8);
+    }
+
+    .faction-slogan-v6 {
+      color: var(--faction-accent);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 12px;
+      font-size: 0.88rem;
+    }
+
+    .faction-card-v6 p {
+      margin: 0;
+      color: #dce2db;
+      line-height: 1.72;
+    }
+
+    .faction-details-v6 {
+      display: grid;
+      gap: 7px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .faction-details-v6 span strong {
+      color: var(--faction-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .faction-hanza {
+      --faction-image: url('hanza.jpg');
+      --faction-accent: #f0d18a;
+      --faction-line: rgba(240,209,138,0.36);
+      --faction-glow: rgba(214,162,74,0.22);
+      background-position: center;
+    }
+
+    .faction-reich {
+      --faction-image: url('reich.jpg');
+      --faction-accent: #d8d8d8;
+      --faction-line: rgba(220,220,220,0.34);
+      --faction-glow: rgba(180,180,180,0.16);
+      background-position: center;
+    }
+
+    .faction-ligne-rouge {
+      --faction-image: url('lignerouge.jpg');
+      --faction-accent: #ff5b4f;
+      --faction-line: rgba(255,91,79,0.44);
+      --faction-glow: rgba(255,60,50,0.25);
+      background-position: center;
+    }
+
+    .faction-spartiate {
+      --faction-image: url('ranger.jpg');
+      --faction-accent: #94c9ff;
+      --faction-line: rgba(148,201,255,0.38);
+      --faction-glow: rgba(148,201,255,0.20);
+      background-position: center;
+    }
+
+    #factions .section-backdrop {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.88)),
+        url('hanza.jpg');
+      opacity: 0.16;
+    }
+
+    @media (max-width: 980px) {
+      .faction-grid-v6 {
+        grid-template-columns: 1fr;
+      }
+
+      .faction-card-v6 {
+        min-height: 390px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .faction-card-v6 {
+        min-height: 340px;
+      }
+
+      .faction-content-v6 {
+        padding: 20px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
   <div class="photo-rotator"></div>
   <div class="cinematic-bars"></div>
-  <div class="light-cone"></div>
   <div class="radiation-haze"></div>
-  <div class="static-noise"></div>
-  <div class="gas-mask-vignette"></div>
   <div class="rain-ash" id="rainAsh"></div>
-  <div class="hud-corner hud-top-left">VISOR // METRO-LINK</div>
+  <div class="hud-corner hud-top-left">METRO-LINK // OPT</div>
   <div class="hud-corner hud-top-right">FILTER // 07:42<br>AMMO // LOW</div>
   <div class="hud-corner hud-bottom-left">SURFACE ACCESS // LOCKED</div>
   <div class="danger-alert" id="dangerAlert">Alerte radio — présence hostile signalée dans le secteur.</div>
@@ -1273,30 +1620,65 @@
         <div class="section-header">
           <div>
             <h2>Factions</h2>
-            <p>Chaque faction possède ses intérêts, son territoire et sa façon de survivre dans le métro.</p>
+            <p>Quatre puissances dominent le réseau : commerce, ordre, idéologie et survie militaire. Chaque camp possède ses lois, ses méthodes et ses ennemis.</p>
           </div>
         </div>
 
-        <div class="grid-2">
-          <article class="card faction-card yellow">
-            <span class="faction-tag">Ordre Spartiate</span>
-            <h3>Rangers / Spartiates</h3>
-            <p>Combattants disciplinés, protecteurs des routes sensibles et des expéditions à haut risque.</p>
+        <div class="faction-grid-v6">
+          <article class="card faction-card-v6 faction-hanza">
+            <div class="faction-content-v6">
+              <span class="faction-kicker-v6">Fréquence : HANZA-1</span>
+              <h3>Hanza</h3>
+              <p class="faction-slogan-v6">Commerce. Passage. Influence.</p>
+              <p>La Hanza contrôle les routes marchandes, les taxes, les convois et les échanges entre stations. Elle préfère les accords aux guerres, mais protège violemment ses intérêts.</p>
+              <div class="faction-details-v6">
+                <span><strong>Rôle :</strong> économie, transport, négociation</span>
+                <span><strong>Forces :</strong> ressources, réseau, diplomatie</span>
+                <span><strong>Faiblesse :</strong> dépendance au commerce</span>
+              </div>
+            </div>
           </article>
-          <article class="card faction-card red">
-            <span class="faction-tag">Hansa / Marchands</span>
-            <h3>Commerçants</h3>
-            <p>Contrôlent les échanges, les munitions, les vivres et les passages entre stations.</p>
+
+          <article class="card faction-card-v6 faction-reich">
+            <div class="faction-content-v6">
+              <span class="faction-kicker-v6">Fréquence : REICH-4</span>
+              <h3>Reich</h3>
+              <p class="faction-slogan-v6">Ordre. Discipline. Purification.</p>
+              <p>Le Reich impose sa vision par la peur, la propagande et la force. Ses soldats verrouillent leurs territoires et traitent toute différence comme une menace à éliminer.</p>
+              <div class="faction-details-v6">
+                <span><strong>Rôle :</strong> contrôle militaire, répression, conquête</span>
+                <span><strong>Forces :</strong> discipline, armes, hiérarchie</span>
+                <span><strong>Faiblesse :</strong> isolement politique</span>
+              </div>
+            </div>
           </article>
-          <article class="card faction-card green">
-            <span class="faction-tag">Stations libres</span>
-            <h3>Civils & Survivants</h3>
-            <p>Habitants, médecins, ouvriers, guides, mécaniciens et personnages sociaux essentiels au RP.</p>
+
+          <article class="card faction-card-v6 faction-ligne-rouge">
+            <div class="faction-content-v6">
+              <span class="faction-kicker-v6">Fréquence : LR-7</span>
+              <h3>Ligne Rouge</h3>
+              <p class="faction-slogan-v6">Peuple. Révolution. Sacrifice.</p>
+              <p>La Ligne Rouge rassemble soldats, ouvriers et civils sous une idéologie collective. Elle avance au nom du peuple, quitte à broyer ceux qui refusent de suivre.</p>
+              <div class="faction-details-v6">
+                <span><strong>Rôle :</strong> mobilisation, propagande, défense de masse</span>
+                <span><strong>Forces :</strong> nombre, industrie, endurance</span>
+                <span><strong>Faiblesse :</strong> rigidité idéologique</span>
+              </div>
+            </div>
           </article>
-          <article class="card faction-card blue">
-            <span class="faction-tag">Zones hostiles</span>
-            <h3>Bandits & Renégats</h3>
-            <p>Groupes violents opérant dans les tunnels, pillages, embuscades et trafics clandestins.</p>
+
+          <article class="card faction-card-v6 faction-spartiate">
+            <div class="faction-content-v6">
+              <span class="faction-kicker-v6">Fréquence : SPARTA-9</span>
+              <h3>Ordre de Spartiate</h3>
+              <p class="faction-slogan-v6">Protéger. Explorer. Survivre.</p>
+              <p>Les Spartiates sont des combattants d'élite spécialisés dans les expéditions, les menaces inconnues et la protection du métro face aux dangers de la surface et des tunnels.</p>
+              <div class="faction-details-v6">
+                <span><strong>Rôle :</strong> opérations spéciales, exploration, sécurité</span>
+                <span><strong>Forces :</strong> entraînement, équipement, sang-froid</span>
+                <span><strong>Faiblesse :</strong> effectifs limités</span>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -1515,7 +1897,7 @@
     // V4 ambiance ultra : cendres, alertes radio et fond selon section
     const ashContainer = document.getElementById('rainAsh');
     if (ashContainer) {
-      for (let i = 0; i < 64; i++) {
+      for (let i = 0; i < 22; i++) {
         const ash = document.createElement('span');
         ash.className = 'ash';
         ash.style.left = Math.random() * 100 + 'vw';
@@ -1546,7 +1928,7 @@
     setInterval(() => {
       const alertText = alerts[Math.floor(Math.random() * alerts.length)];
       showDangerAlert(alertText);
-    }, 16000);
+    }, 24000);
 
     const originalShowSector = showSector;
     showSector = function(id) {
