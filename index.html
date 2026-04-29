@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel V7</title>
+  <title>Metro 2033 RP — Site Officiel V8</title>
   <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
@@ -1558,6 +1558,187 @@
       }
     }
 
+  
+    /* =========================
+       V8 — OPTIMISATION FLUIDITÉ + LOGO PROPRE
+       ========================= */
+
+    .brand {
+      gap: 12px !important;
+    }
+
+    .brand-image-v8 {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255,91,79,0.26);
+      background: rgba(0,0,0,0.55);
+      box-shadow: 0 0 18px rgba(255,91,79,0.14);
+      flex: 0 0 auto;
+    }
+
+    /* On garde l'ambiance, mais on coupe les animations les plus coûteuses */
+    body::before {
+      animation: none !important;
+      opacity: 0.36;
+      transform: none !important;
+    }
+
+    .photo-rotator {
+      animation: none !important;
+      background-image: url('fond5.jpg') !important;
+      opacity: 0.18 !important;
+      filter: none !important;
+      will-change: auto !important;
+    }
+
+    .cinematic-bars::before,
+    .cinematic-bars::after {
+      height: 24px !important;
+      background: rgba(0,0,0,0.48) !important;
+    }
+
+    .radiation-haze {
+      animation: none !important;
+      opacity: 0.12 !important;
+    }
+
+    .ambient-layer::before {
+      animation: none !important;
+      opacity: 0.38 !important;
+    }
+
+    .fog {
+      animation: none !important;
+      opacity: 0.055 !important;
+      filter: blur(24px) !important;
+    }
+
+    .scan-light {
+      display: none !important;
+    }
+
+    .rain-ash {
+      opacity: 0.24 !important;
+    }
+
+    .ash {
+      width: 1px !important;
+      height: 7px !important;
+      opacity: 0.16 !important;
+      animation-duration: 28s !important;
+      filter: none !important;
+    }
+
+    .hero-card::after {
+      animation: none !important;
+      opacity: 0.48 !important;
+      transform: none !important;
+    }
+
+    .station-dot,
+    .map-line,
+    .brand-badge.brand-logo img,
+    .hero-logo {
+      animation: none !important;
+    }
+
+    .intro {
+      animation-delay: 2.2s !important;
+      animation-duration: 0.55s !important;
+    }
+
+    .loading-fill {
+      animation-duration: 1.9s !important;
+    }
+
+    .intro-box {
+      backdrop-filter: blur(4px) !important;
+      box-shadow: 0 0 42px rgba(214,162,74,0.12), 0 22px 70px rgba(0,0,0,0.58) !important;
+    }
+
+    .intro-box::before {
+      width: min(180px, 48vw) !important;
+      height: 124px !important;
+      margin-bottom: 14px !important;
+      filter: drop-shadow(0 0 18px rgba(255,91,79,0.20)) !important;
+    }
+
+    .hero-card,
+    .panel,
+    .card {
+      backdrop-filter: none !important;
+    }
+
+    .hero-card:hover,
+    .panel:hover,
+    .card:hover,
+    .faction-card-v6:hover {
+      transform: none !important;
+      box-shadow: 0 22px 62px rgba(0,0,0,0.62) !important;
+    }
+
+    .btn::after,
+    .nav-cta::after,
+    .mini-btn::after,
+    .copy-btn::after {
+      display: none !important;
+    }
+
+    .danger-alert {
+      backdrop-filter: none !important;
+    }
+
+    /* Optimisation images : moins de glow, moins de recalcul visuel */
+    .faction-card-v6 {
+      box-shadow: 0 18px 52px rgba(0,0,0,0.56) !important;
+    }
+
+    .faction-card-v6::before {
+      opacity: 0.58 !important;
+    }
+
+    .section-backdrop {
+      opacity: 0.09 !important;
+    }
+
+    /* Mobile : ultra léger */
+    @media (max-width: 900px) {
+      .photo-rotator,
+      .rain-ash,
+      .radiation-haze,
+      .ambient-layer,
+      .cinematic-bars,
+      .hud-corner,
+      .geiger {
+        display: none !important;
+      }
+
+      .brand-image-v8 {
+        width: 50px;
+        height: 50px;
+      }
+
+      .site-header {
+        backdrop-filter: none !important;
+      }
+
+      .intro {
+        display: none !important;
+      }
+
+      .hero-card::after {
+        opacity: 0.42 !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro {
+        display: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1597,7 +1778,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#" data-sector="accueil">
-        
+        <img class="brand-image-v8" src="olmetro.png" alt="Logo One Life Metro">
         <span><small>Serveur Roleplay</small>Metro 2033 RP</span>
       </a>
 
@@ -1624,7 +1805,7 @@
           <article class="hero-card">
             <div class="hero-content">
               <span class="eyebrow">☢ Moscou — Année 2033</span>
-              <div class="hero-title-row"><img class="hero-logo" style="display:none;" src="olmetro.png" alt="Logo One Life Metro"><h1>Survis au Metro</h1></div>
+              <div class="hero-title-row"><h1>Survis au Metro</h1></div>
               <p class="lead">
                 Le monde d'en haut est mort. Sous les ruines irradiées de Moscou, les stations sont devenues des cités,
                 les munitions une monnaie, et chaque tunnel peut être ton dernier voyage.
@@ -1991,7 +2172,7 @@
     // V4 ambiance ultra : cendres, alertes radio et fond selon section
     const ashContainer = document.getElementById('rainAsh');
     if (ashContainer) {
-      for (let i = 0; i < 22; i++) {
+      for (let i = 0; i < 10; i++) {
         const ash = document.createElement('span');
         ash.className = 'ash';
         ash.style.left = Math.random() * 100 + 'vw';
@@ -2022,7 +2203,7 @@
     setInterval(() => {
       const alertText = alerts[Math.floor(Math.random() * alerts.length)];
       showDangerAlert(alertText);
-    }, 24000);
+    }, 36000);
 
     const originalShowSector = showSector;
     showSector = function(id) {
