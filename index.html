@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel V9</title>
+  <title>Metro 2033 RP — Site Officiel V13</title>
   <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
@@ -1890,6 +1890,103 @@
       }
     }
 
+  
+    /* V11 — Règlement complet */
+    .rules-terminal {
+      border: 1px solid rgba(214,162,74,0.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(8,10,10,0.96), rgba(4,6,6,0.98));
+      box-shadow: 0 24px 78px rgba(0,0,0,0.62);
+      overflow: hidden;
+    }
+
+    .rules-terminal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(214,162,74,0.06);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 950;
+    }
+
+    .rules-terminal-head strong {
+      color: var(--accent-2);
+    }
+
+    .rules-block {
+      padding: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .rules-block:last-child {
+      border-bottom: 0;
+    }
+
+    .rules-block h3 {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+    }
+
+    .rule-entry {
+      padding: 18px;
+      border: 1px solid rgba(214,162,74,0.10);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.025);
+      margin-bottom: 14px;
+    }
+
+    .rule-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .rule-entry strong {
+      display: block;
+      color: #f2d28c;
+      text-transform: uppercase;
+      letter-spacing: 0.055em;
+      margin-bottom: 9px;
+      font-size: 0.95rem;
+    }
+
+    .rule-entry p {
+      margin: 0;
+      color: #dce2db;
+      line-height: 1.75;
+    }
+
+    .rule-entry p + p {
+      margin-top: 10px;
+    }
+
+    .rule-warning {
+      color: #ffd1cc !important;
+      border-left: 3px solid rgba(255,91,79,0.7);
+      padding-left: 12px;
+      background: rgba(255,91,79,0.045);
+      border-radius: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .rules-block {
+        padding: 18px;
+      }
+
+      .rule-entry {
+        padding: 15px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1944,7 +2041,7 @@
 
       <div class="nav-actions">
         <button class="nav-cta surface-btn" id="openSurface">Surface</button>
-        <a class="nav-cta" href="#connexion">Connexion</a>
+        <a href="https://discord.gg/g8BCj5cBgn" target="_blank" class="nav-cta">Discord</a>
       </div>
     </div>
   </header>
@@ -2110,53 +2207,144 @@
       </div>
     </section>
 
-    <section id="reglement" class="sector-section section">
-      <div class="section-backdrop"></div>
-      <div class="container">
-        <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
-        <div class="section-header">
-          <div>
-            <h2>Règlement RP</h2>
-            <p>Des règles claires pour garder une ambiance sérieuse, tendue et agréable à jouer.</p>
-          </div>
-        </div>
+    
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Roleplay général</h3>
-            <ul>
-              <li>Respect du FearRP, PainRP et NLR selon les décisions staff.</li>
-              <li>Pas de troll, HRP vocal abusif ou comportement qui casse l'immersion.</li>
-              <li>Les conflits doivent avoir une raison RP cohérente.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Combat & mort</h3>
-            <ul>
-              <li>La mort RP doit être validée selon la gravité de la scène.</li>
-              <li>Les armes lourdes et équipements rares doivent rester exceptionnels.</li>
-              <li>Les embuscades doivent laisser place à une vraie scène RP.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Surface</h3>
-            <ul>
-              <li>Masque obligatoire, filtres limités, danger permanent.</li>
-              <li>La surface est une zone à haut risque, pas une balade gratuite.</li>
-              <li>Les expéditions doivent être préparées en RP.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Commerce</h3>
-            <ul>
-              <li>Les munitions militaires peuvent servir de monnaie RP.</li>
-              <li>Le vol, le troc et les contrats doivent être joués proprement.</li>
-              <li>Les ressources rares ne doivent pas être distribuées sans logique.</li>
-            </ul>
-          </div>
-        </div>
+<section id="reglement" class="sector-section section">
+  <div class="section-backdrop"></div>
+  <div class="container">
+    <div class="tools"><button class="mini-btn" data-sector="accueil">← Retour accueil</button></div>
+
+    <div class="section-header">
+      <div>
+        <h2>Règlement Officiel</h2>
+        <p>Le règlement encadre les scènes roleplay afin de préserver une ambiance sérieuse, cohérente et immersive dans l’univers Metro 2033.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="rules-terminal">
+      <div class="rules-terminal-head">
+        <span>Terminal règlementaire // Metro 2033 RP</span>
+        <strong>ACCÈS SURVIVANT</strong>
+      </div>
+
+      
+<div class="rules-block">
+  <h3>I. Règles fondamentales</h3>
+
+  <article class="rule-entry">
+    <strong>1.1 — Décence et courtoisie</strong>
+    <p>Chaque joueur doit faire preuve de respect envers les autres membres de la communauté. Les propos ou comportements irrespectueux, injurieux, harcelants, sexistes, racistes, homophobes, transphobes ou discriminatoires sont strictement interdits, même lorsqu’ils sont justifiés par du roleplay.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.2 — Freekill</strong>
+    <p>Il est interdit de blesser ou tuer un joueur sans raison roleplay valable. Une action létale doit être justifiée par une menace directe contre votre vie, vos biens ou une situation cohérente. Sans danger immédiat, privilégiez la négociation, la fuite ou la neutralisation.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.3 — Canal vocal</strong>
+    <p>Le canal vocal est exclusivement roleplay. Vous devez parler comme votre personnage et éviter tout terme hors RP tel que admin, physgun, ticket, ou toute référence au jeu ou au staff.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.4 — New Life Rule</strong>
+    <p>Après votre mort, un changement de métier ou la fin d’une action, vous devez oublier les événements récents. Vous ne pouvez pas revenir vous venger ou dénoncer vos agresseurs.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.5 — Power Gaming</strong>
+    <p>Toutes les actions doivent être réalistes, cohérentes et réalisables. Vous ne pouvez pas ignorer vos blessures ou imposer des actions irréalistes à d’autres joueurs.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.6 — Fear Roleplay</strong>
+    <p>Vous devez jouer la peur de mourir. En situation de faiblesse ou face à une menace, votre personnage doit réagir de manière crédible et cohérente.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.7 — Triche</strong>
+    <p>L’utilisation de cheats, d’exploits ou de bugs est strictement interdite. Tout bug doit être signalé au staff.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.8 — Métagaming</strong>
+    <p>Il est interdit d’utiliser des informations obtenues hors roleplay (Discord, stream, messages privés) pour avantager votre personnage.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.9 — Revenge Kill</strong>
+    <p>Il est interdit de revenir se venger après une mort ou une action RP. Vous devez respecter la New Life Rule.</p>
+  </article>
+
+  <article class="rule-entry">
+    <strong>1.10 — Respect des rôles</strong>
+    <p>Chaque joueur doit respecter son rôle, sa faction et son personnage. Tout comportement incohérent ou volontairement troll est interdit.</p>
+  </article>
+
+</div>
+
+
+      <div class="rules-block">
+        <h3>II. Règles principales</h3>
+
+        <article class="rule-entry">
+          <strong>2.1 — Factions officielles et Mass RP</strong>
+          <p>Les factions officielles sont : le Reich, la Hanza, la Ligne Rouge et l’Ordre Spartiate. Leurs stations et territoires sont soumis au Mass RP. Une fusillade, une attaque ou un siège contre une station officielle ne peut pas être lancé librement. Un ticket staff est obligatoire avant toute action de grande ampleur.</p>
+        </article>
+
+        <article class="rule-entry">
+          <strong>2.2 — Témoignage et véracité</strong>
+          <p>Un témoignage roleplay peut être considéré comme une preuve suffisante pour arrêter ou accuser un joueur. Cependant, les faux témoignages sont interdits. Mentir volontairement dans le but de faire sanctionner ou arrêter injustement un joueur peut entraîner des sanctions RP et staff.</p>
+        </article>
+
+        <article class="rule-entry">
+          <strong>2.3 — Actions hostiles en station</strong>
+          <p>Les actions hostiles dans une station, comme le vol, le braquage ou le racket, nécessitent qu’au minimum quatre membres de la station concernée soient connectés. Cette règle permet d’éviter les actions abusives contre des stations vides ou incapables de répondre.</p>
+        </article>
+
+        <article class="rule-entry">
+          <strong>2.4 — Prise d’otage</strong>
+          <p>Les prises d’otage doivent obligatoirement donner lieu à une négociation tant que les otages sont en vie. Les preneurs d’otages doivent informer spontanément l’autorité ou la faction concernée de la présence d’otages. Chaque otage peut être échangé contre de l’argent, du temps, de la nourriture, des ressources ou une garantie roleplay.</p>
+        </article>
+
+        <article class="rule-entry">
+          <strong>2.5 — Tunnels</strong>
+          <p>Dans les tunnels, il n’existe aucune hiérarchie protégée. N’importe quel personnage peut être menacé, braqué ou attaqué, peu importe son alliance ou sa faction. Les tunnels sont considérés comme des zones dangereuses où la loi des stations ne s’applique pas toujours.</p>
+        </article>
+      </div>
+
+      <div class="rules-block">
+        <h3>III. Règles spécifiques Metro RP</h3>
+
+        <article class="rule-entry">
+          <strong>3.1 — Initiation RP</strong>
+          <p>Avant toute action hostile, une initiation roleplay claire est obligatoire. Cela peut prendre la forme d’une sommation, d’une menace, d’un ordre, d’un dialogue ou d’une scène permettant à l’autre joueur de comprendre le danger. Il est interdit d’attaquer directement un joueur sans interaction préalable.</p>
+          <p class="rule-warning">Exception : l’initiation RP n’est pas obligatoire lorsqu’une guerre déclarée et validée est en cours entre factions.</p>
+        </article>
+
+        <article class="rule-entry">
+          <strong>3.2 — Guerre entre factions</strong>
+          <p>Une guerre entre factions ne peut pas être déclarée librement. Un ticket staff préalable est obligatoire. La faction souhaitant déclarer la guerre doit fournir une motivation roleplay claire, cohérente et sérieuse. La guerre ne devient officielle qu’après validation de l’administration.</p>
+          <p class="rule-warning">Sans validation staff, toute attaque organisée sous prétexte de guerre sera considérée comme une action abusive, voire du freekill.</p>
+        </article>
+
+<article class="rule-entry">
+  <strong>3.X — Pillage de base</strong>
+  <p>Le pillage d'une base appartenant à un groupe est strictement encadré. Vous devez obligatoirement ouvrir un ticket staff au préalable afin de justifier votre action et valider les modalités du pillage avant toute tentative d’assaut ou d’attaque.</p>
+  <p class="rule-warning">Sans validation staff, toute tentative de pillage ou d’attaque de base pourra être considérée comme du no RP ou du freekill.</p>
+</article>
+
+
+        
+
+        
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <section id="systems" class="sector-section section">
       <div class="section-backdrop"></div>
