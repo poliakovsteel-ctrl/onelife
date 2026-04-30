@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel V8</title>
+  <title>Metro 2033 RP — Site Officiel V9</title>
   <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
@@ -1523,7 +1523,7 @@
       width: min(210px, 54vw);
       height: 150px;
       margin: 0 auto 18px;
-      background: url('olmetro.png') center/contain no-repeat;
+      background: url('onelifelogo.jpeg') center/contain no-repeat;
       filter: drop-shadow(0 0 28px rgba(255,91,79,0.28));
       opacity: 0.92;
     }
@@ -1739,6 +1739,157 @@
       }
     }
 
+  
+    /* =========================
+       V9 — LOGO ONE LIFE + OPTIMISATION
+       Fichier logo attendu : onelifelogo.jpeg
+       ========================= */
+
+    .brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 13px !important;
+      min-width: 0;
+    }
+
+    .brand-logo-v9 {
+      width: 62px;
+      height: 62px;
+      object-fit: cover;
+      border-radius: 14px;
+      flex: 0 0 auto;
+      background: rgba(0,0,0,0.72);
+      border: 1px solid rgba(255,130,50,0.32);
+      box-shadow:
+        0 0 18px rgba(255,120,40,0.16),
+        0 12px 28px rgba(0,0,0,0.38);
+    }
+
+    .brand span {
+      line-height: 1.1;
+    }
+
+    .intro-box::before {
+      background: url('onelifelogo.jpeg') center/contain no-repeat !important;
+      width: min(190px, 52vw) !important;
+      height: 135px !important;
+      margin: 0 auto 16px !important;
+      filter: drop-shadow(0 0 16px rgba(255,120,40,0.20)) !important;
+      opacity: 0.96 !important;
+    }
+
+    body::before,
+    .hero-card::after,
+    .photo-rotator,
+    .ambient-layer::before,
+    .radiation-haze {
+      animation: none !important;
+      will-change: auto !important;
+    }
+
+    body::before {
+      opacity: 0.34 !important;
+      transform: none !important;
+    }
+
+    .photo-rotator,
+    .scan-light,
+    .hud-corner {
+      display: none !important;
+    }
+
+    .cinematic-bars::before,
+    .cinematic-bars::after {
+      height: 22px !important;
+      background: rgba(0,0,0,0.42) !important;
+      box-shadow: none !important;
+    }
+
+    .rain-ash {
+      opacity: 0.18 !important;
+    }
+
+    .ash {
+      width: 1px !important;
+      height: 6px !important;
+      opacity: 0.12 !important;
+      filter: none !important;
+      animation-duration: 34s !important;
+    }
+
+    .fog {
+      animation: none !important;
+      opacity: 0.045 !important;
+      filter: blur(20px) !important;
+    }
+
+    .radiation-haze {
+      opacity: 0.10 !important;
+    }
+
+    .intro {
+      animation-delay: 1.8s !important;
+      animation-duration: 0.45s !important;
+    }
+
+    .loading-fill {
+      animation-duration: 1.55s !important;
+    }
+
+    .site-header,
+    .hero-card,
+    .panel,
+    .card,
+    .danger-alert {
+      backdrop-filter: none !important;
+    }
+
+    .hero-card:hover,
+    .panel:hover,
+    .card:hover,
+    .faction-card-v6:hover {
+      transform: none !important;
+      box-shadow: 0 20px 58px rgba(0,0,0,0.58) !important;
+    }
+
+    .btn::after,
+    .nav-cta::after,
+    .mini-btn::after,
+    .copy-btn::after {
+      display: none !important;
+    }
+
+    .map-line,
+    .station-dot,
+    .brand-badge.brand-logo img,
+    .hero-logo {
+      animation: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .brand-logo-v9 {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+      }
+
+      .rain-ash,
+      .ambient-layer,
+      .radiation-haze,
+      .cinematic-bars,
+      .geiger {
+        display: none !important;
+      }
+
+      .intro {
+        display: none !important;
+      }
+
+      body::before {
+        opacity: 0.30 !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1778,7 +1929,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#" data-sector="accueil">
-        <img class="brand-image-v8" src="olmetro.png" alt="Logo One Life Metro">
+        <img class="brand-logo-v9" src="onelifelogo.jpeg" alt="Logo One Life">
         <span><small>Serveur Roleplay</small>Metro 2033 RP</span>
       </a>
 
@@ -2172,7 +2323,7 @@
     // V4 ambiance ultra : cendres, alertes radio et fond selon section
     const ashContainer = document.getElementById('rainAsh');
     if (ashContainer) {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 6; i++) {
         const ash = document.createElement('span');
         ash.className = 'ash';
         ash.style.left = Math.random() * 100 + 'vw';
@@ -2203,7 +2354,7 @@
     setInterval(() => {
       const alertText = alerts[Math.floor(Math.random() * alerts.length)];
       showDangerAlert(alertText);
-    }, 36000);
+    }, 45000);
 
     const originalShowSector = showSector;
     showSector = function(id) {
