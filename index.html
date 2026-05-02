@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro 2033 RP — Site Officiel V13</title>
-  <meta name="description" content="Site officiel du serveur Metro 2033 Roleplay. Lore, factions, règlement, systèmes RP et accès serveur." />
+  <title>Actual Roleplay — Site Officiel</title>
+  <meta name="description" content="Site officiel de la communauté Actual Roleplay. Roleplay immersif, lore, factions, règlement, systèmes RP et accès serveur." />
 
   <style>
     :root {
@@ -1466,7 +1466,7 @@
 
   
     /* =========================
-       V7 — LOGO ONE LIFE METRO
+       V7 — LOGO ACTUAL ROLEPLAY METRO
        ========================= */
 
     .brand-badge.brand-logo {
@@ -1523,7 +1523,7 @@
       width: min(210px, 54vw);
       height: 150px;
       margin: 0 auto 18px;
-      background: url('9180606e-f30d-423b-b71a-c85fc486eb0c.png') center/contain no-repeat;
+      background: url('arplogo.png') center/contain no-repeat;
       filter: drop-shadow(0 0 28px rgba(255,91,79,0.28));
       opacity: 0.92;
     }
@@ -1741,7 +1741,7 @@
 
   
     /* =========================
-       V9 — LOGO ONE LIFE + OPTIMISATION
+       V9 — LOGO ACTUAL ROLEPLAY + OPTIMISATION
        Fichier logo attendu : arplogo.png
        ========================= */
 
@@ -2075,6 +2075,24 @@
       }
     }
 
+
+    /* =========================
+       ARP — Correctifs logo propres
+       ========================= */
+    .brand-logo-v9,
+    .hero-logo {
+      object-fit: contain !important;
+      background: rgba(0,0,0,0.55) !important;
+    }
+
+    .hero-title-row {
+      align-items: center !important;
+    }
+
+    .intro-box::before {
+      background: url('arplogo.png') center/contain no-repeat !important;
+    }
+
   </style>
 </head>
 
@@ -2115,7 +2133,7 @@
     <div class="container nav">
       <a class="brand" href="#" data-sector="accueil">
         <img class="brand-logo-v9" src="arplogo.png" alt="Logo Actual Roleplay">
-        <span><small>Serveur Roleplay</small>Metro 2033 RP</span>
+        <span><small>Communauté Française</small>Actual Roleplay</span>
       </a>
 
       <nav class="nav-links">
@@ -2141,7 +2159,9 @@
           <article class="hero-card">
             <div class="hero-content">
               <span class="eyebrow">☢ Moscou — Année 2033</span>
-              <div class="hero-title-row"><h1>Survis au Metro</h1></div>
+              <div class="hero-title-row">
+                <h1>Actual Roleplay</h1>
+              </div>
               <p class="lead">
                 Le monde d'en haut est mort. Sous les ruines irradiées de Moscou, les stations sont devenues des cités,
                 les munitions une monnaie, et chaque tunnel peut être ton dernier voyage.
@@ -2172,7 +2192,7 @@
               <div class="badge-row">
                 <span class="badge">Garry's Mod</span>
                 <span class="badge">Serious RP</span>
-                <span class="badge">Metro 2033</span>
+                <span class="badge">Immersion Metro</span>
                 <span class="badge">Whitelist possible</span>
               </div>
             </div>
@@ -2208,8 +2228,8 @@
 
     <div class="lore-terminal">
       <div class="lore-terminal-head">
-        <span>Archives souterraines // Metro 2033 RP</span>
-        <strong>Dossier : ONE LIFE</strong>
+        <span>Archives souterraines // Actual Roleplay</span>
+        <strong>Dossier : ACTUAL ROLEPLAY</strong>
       </div>
 
       <div class="lore-grid">
@@ -2238,7 +2258,7 @@
         </article>
 
         <article class="lore-card lore-card-wide">
-          <span class="lore-code">ONE LIFE // Survie</span>
+          <span class="lore-code">ACTUAL ROLEPLAY // Survie</span>
           <h3>Une seule vie</h3>
           <p>Ici, vous n’êtes pas un héros immortel. Vous êtes un survivant parmi d’autres. Marchand, soldat, éclaireur, bandit ou simple civil : votre réputation, vos choix et vos alliances peuvent faire de vous une légende… ou un nom oublié dans les tunnels.</p>
         </article>
@@ -2335,7 +2355,7 @@
 
     <div class="rules-terminal">
       <div class="rules-terminal-head">
-        <span>Terminal règlementaire // Metro 2033 RP</span>
+        <span>Terminal règlementaire // Actual Roleplay</span>
         <strong>ACCÈS SURVIVANT</strong>
       </div>
 
@@ -2533,7 +2553,7 @@
 
   <footer class="footer">
     <div class="container footer-card">
-      <div><span>Metro 2033 RP</span> — Site communautaire non officiel.</div>
+      <div><span>Actual Roleplay</span> — Site communautaire non officiel.</div>
       <div>IP et liens externes à renseigner plus tard.</div>
     </div>
   </footer>
@@ -2673,3 +2693,9 @@
   </script>
 </body>
 </html>
+
+
+<style>
+  /* Correctif ARP : retrait du logo sous "Moscou — Année 2033" */
+  .hero-title-row .hero-logo { display: none !important; }
+</style>
